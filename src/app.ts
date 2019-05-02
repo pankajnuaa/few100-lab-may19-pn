@@ -1,47 +1,91 @@
 let tipButtons: NodeList;
-let tipPercentNum : number = 10;
-let billAmountNum : number;
-// const tipAmountToDisplay;
-export function runApp(){
-    console.log("The app is running");     
-    const source = document.getElementById('userInput') as HTMLInputElement   
-    const billAmount = document.getElementById('billAmount');
-    const tipAmount = document.getElementById('tippingPercent');
-    const tipPercent = document.getElementById('tipPercent');
-    const tipAmountToDisplay = document.getElementById('tipAmount');
-    const totalAmount = document.getElementById('totalAmount');
-  
-  //this is event listner when amount is changed
-    source.addEventListener('input',()=>{
+let tipPercentNum: number = 20;
+let billAmountNum: number;
+
+let source: HTMLInputElement;
+let billAmount: HTMLInputElement;
+let tippingPercent: HTMLInputElement;
+let tipPercent: HTMLInputElement;
+let tipAmountToDisplay: HTMLInputElement;
+let totalAmount: HTMLInputElement;
+export function runApp() {
+    source = document.getElementById('userInput') as HTMLInputElement;
+    tippingPercent = document.getElementById('tippingPercent') as HTMLInputElement;
+
+    billAmount = document.getElementById('billAmount') as HTMLInputElement;
+    tipPercent = document.getElementById('tipPercent') as HTMLInputElement;
+    tipAmountToDisplay = document.getElementById('tipAmount') as HTMLInputElement;
+    totalAmount = document.getElementById('totalAmount') as HTMLInputElement;
+
+
+
+    // set default tip percent value
+    tippingPercent.innerHTML = String(tipPercentNum) + '%';
+    tipPercent.innerHTML = String(tipPercentNum) + '%';
+
+    //this is event listner when amount is changed
+    source.addEventListener('input', () => {
         const amount: string = source.value;
         billAmountNum = +amount;
-        billAmount.innerHTML = amount;
-       console.log('user input value is:'+amount);
+        if (isNaN(billAmountNum)) {
+            source.classList.add('inputError');
+            clearAmount();
+        } else {
+            source.classList.remove('inputError')
+            calculateAndRender();
+        }
 
-        let amountOfTip : any = tipPercentNum/100*billAmountNum;
-        tipAmountToDisplay.innerHTML = amountOfTip;
-        totalAmount.innerHTML = billAmountNum + amountOfTip;
 
-       
+
     });
 
     //this is when tip percent is changed
+    let counter: number = 1;
     tipButtons = document.querySelectorAll('.tipButton');
     tipButtons.forEach((tButton: HTMLDivElement) => {
-       
-        tButton.addEventListener('click', ()=>{
-            let tip = tButton.innerHTML;
-            tipPercentNum = +(tip.substr(0,1))
-            tipAmount.innerHTML = tip;
-            tipPercent.innerHTML = tip;
+        //default button setup
+        if (counter === 3) { //this is for 20%
+            tButton.classList.add('selected');
+        } else {
+            tButton.classList.add('unSelected');
+        }
+        counter++;
 
-            let amountOfTip : any = tipPercentNum/100*billAmountNum;
-            tipAmountToDisplay.innerHTML = amountOfTip;
-            totalAmount.innerHTML = billAmountNum + amountOfTip;
+        tButton.addEventListener('click', () => {
+            let tip = tButton.innerHTML;
+            tipPercentNum = +(tip.substr(0, 2))
+            tippingPercent.innerHTML = tip;
+            tipPercent.innerHTML = tip;
+            if (!isNaN(billAmountNum)) {
+                calculateAndRender()
+            }
+            //unselect all the buttons
+            tipButtons.forEach((iButton: HTMLDivElement) => {
+                iButton.classList.remove('selected')
+                iButton.classList.add('unSelected');
+            });
+            //then select the selected button
+            tButton.classList.remove('unSelected');
+            tButton.classList.add('selected');
         });
-        
+
     })
 }
+
+function clearAmount() {
+    tipAmountToDisplay.innerHTML = "";
+    totalAmount.innerHTML = "";
+    billAmount.innerHTML = "";
+}
+
+function calculateAndRender() {
+    billAmount.innerHTML = (billAmountNum).toFixed(2);
+    let amountOfTip: any = (tipPercentNum / 100 * billAmountNum);
+    tipAmountToDisplay.innerHTML = String(amountOfTip.toFixed(2));
+    totalAmount.innerHTML = String((billAmountNum + amountOfTip).toFixed(2));
+}
+
+
 
 
 

@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Webpack Showcase</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
 </head>
+
 <body>
     <div class="container">
-    <div class="page-header">
-        <h1>Tip Calculator</h1>
-    </div>
-    <div class="input-group mb-3">
-        <div class="input-group-prepend">
-            <span class="input-group-text">$</span>
+        <div class="page-header">
+            <h1>Tip Calculator</h1>
         </div>
-        <input type="text" class="form-control" id="userInput" >
-    </div>
-    
-    <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary tipButton">10%</button>
-            <button type="button" class="btn btn-secondary tipButton">15%</button>
-            <button type="button" class="btn btn-secondary tipButton">20%</button>
-          </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input type="text"
+                   class="form-control"
+                   id="userInput">
+        </div>
 
-          <div>
-              <p>You are tipping <span id="tippingPercent"></span></p>
-          </div>
+        <div class="btn-group"
+             role="group"
+             aria-label="Basic example">
+            <button type="button"
+                    class="btn btn-secondary tipButton">10%</button>
+            <button type="button"
+                    class="btn btn-secondary tipButton">15%</button>
+            <button type="button"
+                    class="btn btn-secondary tipButton defaultTip">20%</button>
+        </div>
 
-          <div class="list-group">
-                <a class="list-group-item list-group-item-action"  >Bill Amount: $<span id="billAmount"></span></a>
-                <a class="list-group-item list-group-item-action" >Tip Percentage:<span id="tipPercent"></span></a>
-                <a class="list-group-item list-group-item-action" >Anount of tip: $<span id="tipAmount"></span></a>
-                <a class="list-group-item list-group-item-action" >Total to be Paid:$<span id="totalAmount"></span</a>
-              </div>
-    </div>
-            
-</body>
-</html>
+        <div>
+            <p>You are tipping <span id="tippingPercent"></span></p>
+        </div>
+
+        <div class="list-group">
+            <a class="list-group-item list-group-item-action">Bill Amount: $<span id="billAmount"></span></a>
+            <a class="list-group-item list-group-item-action">Tip Percentage:<span id="tipPercent"></span></a>
+            <a class="list-group-item list-group-item-action">Anount of tip: $<span id="tipAmount"></span></a>
+            <a class="list-group-item list-group-item-action">Total to be Paid:$<span id="totalAmount"></span</a> </div>
+                            </div>
+                            </body>
+                            </html>

@@ -5,4 +5,19 @@
 /* #userInput{
     border: 2px solid red;
 } */
-input:focus:required:invalid {border: 2px solid red;}
+.selected {
+    color: #fff;
+    background-color: #747679;
+    border-color: #6c757d;
+}
+
+.unSelected {
+    color: #fff;
+    background-color: #151617;
+    border-color: #6c757d;
+}
+
+.inputError{
+    padding: 2px 1px;
+    border: 5px solid red;
+}

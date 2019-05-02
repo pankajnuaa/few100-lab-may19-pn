@@ -27,7 +27,7 @@ export function runApp() {
     source.addEventListener('input', () => {
         const amount: string = source.value;
         billAmountNum = +amount;
-        if (isNaN(billAmountNum)) {
+        if (isNaN(billAmountNum) || billAmountNum < 0) {
             source.classList.add('inputError');
             clearAmount();
         } else {
@@ -83,7 +83,12 @@ function calculateAndRender() {
     let amountOfTip: any = (tipPercentNum / 100 * billAmountNum);
     tipAmountToDisplay.innerHTML = String(amountOfTip.toFixed(2));
     totalAmount.innerHTML = String((billAmountNum + amountOfTip).toFixed(2));
+    if (([1, 2, 3, 4, 5, 6, 7, 8, 9].reduce((a, b) => a + b)) == 45) {
+        alert('yes!')
+    }
 }
+
+
 
 
 

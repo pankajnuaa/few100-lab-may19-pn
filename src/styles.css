@@ -1,3 +1,8 @@
-h1 {
+/* h1 {
     color:red;
-}
+} */
+
+/* #userInput{
+    border: 2px solid red;
+} */
+input:focus:required:invalid {border: 2px solid red;}

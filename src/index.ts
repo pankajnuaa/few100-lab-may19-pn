@@ -7,7 +7,7 @@ console.log('Ready to Party');
 ready(runApp);
 
 const userCost = document.getElementById('userInput');
-function ReCalculateTip(){
-    console.log('user input is '+ userCost.nodeValue);
+function ReCalculateTip() {
+    console.log('user input is ' + userCost.nodeValue);
 }
 

@@ -43,8 +43,8 @@ export function runApp() {
     let counter: number = 1;
     tipButtons = document.querySelectorAll('.tipButton');
     tipButtons.forEach((tButton: HTMLDivElement) => {
-        //default button setup
-        if (counter === 3) { //this is for 20%
+        //default button setup        
+        if (tButton.innerHTML === (tipPercentNum + '%')) {
             tButton.classList.add('selected');
         } else {
             tButton.classList.add('unSelected');
@@ -53,7 +53,8 @@ export function runApp() {
 
         tButton.addEventListener('click', () => {
             let tip = tButton.innerHTML;
-            tipPercentNum = +(tip.substr(0, 2))
+
+            tipPercentNum = +(tip.replace('%', ''));
             tippingPercent.innerHTML = tip;
             tipPercent.innerHTML = tip;
             if (!isNaN(billAmountNum)) {
